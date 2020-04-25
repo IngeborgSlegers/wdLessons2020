@@ -10,5 +10,9 @@ This repository is structured into folders by badge. For Gold, which is the majo
 
 Files are markdown with blocks of code.
 
+## Style guide
+
+*forthcoming..*
+
 
 
