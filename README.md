@@ -9,12 +9,17 @@ This repository is structured into folders by badge. For Gold, which is the majo
 
 
 
+## Challenges
+
+This repository contains links to the [jsChallenges](https://github.com/ElevenfiftyAcademy/jsChallenges) repo where challenges are used in the classroom. When adding a possible challenge to the curriculum, add it to that challenges repo and then link to it from here.
+
+
 
 ## Style guide
 
 *in progress*
 
-Files are [markdown](https://guides.github.com/features/mastering-markdown/) with blocks of code. To turn on syntax highlighting in clients that support it (GitHub, VS Code), write the language ('html' or 'js' probably) immediately after the opening three backticks that enclose a code block:
+Files are [markdown](https://github.github.com/gfm/) with blocks of code. To turn on syntax highlighting in clients that support it (GitHub, VS Code), write the language ('html' or 'js' probably) immediately after the opening three backticks that enclose a code block:
 
 ```js
 let x = undefined;
