@@ -13,6 +13,7 @@ This repository is structured into folders by badge. For Gold, which is the majo
 
 This repository contains links to the [jsChallenges](https://github.com/ElevenfiftyAcademy/jsChallenges) repo where challenges are used in the classroom. When adding a possible challenge to the curriculum, add it to that challenges repo and then link to it from here.
 
+Until the challenges repo structure is finalized, however, feel free to add placeholders for those links.
 
 
 ## Style guide
