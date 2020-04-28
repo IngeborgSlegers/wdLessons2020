@@ -66,6 +66,7 @@ hello("Vasquez");  // returns "I said hello"
 
 The most important takeaway: do **not** use comments for elucidation or explanation.
 This is what the surrounding text is for.
+(However, encourage the students to add comments themselves explaining what the code does. Theory: this will give them practice commenting code.)
 
 Unfortunately, although some clients support automatic line numbers in code blocks, GitHub doesn't.
 
