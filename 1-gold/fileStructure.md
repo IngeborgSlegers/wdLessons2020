@@ -2,7 +2,7 @@
 WORK IN PROGRESS --- CURRENTLY REFACTORING
 
 ```
-javascriptMay2020 (or whatever)
+┌ javascriptMay2020 (or whatever)
 └─┬── javascriptLibrary
   ├───┬── 1-jsFundamentals
   │   ├───┬── 1-grammarAndTypes
