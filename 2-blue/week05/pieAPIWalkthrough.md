@@ -3,12 +3,12 @@
 
 ### Folder Structure
 
-In your blue badge folder, create a folder called `pieProject`.
+In your blue badge folder, create a folder called `pie-project`.
 We will end up having two folders in here, one for the client (next week) and one for the server.
 Just create the `server` folder now.
 
 ```
-pieProject
+pie-project
     server
 ```
 
@@ -174,5 +174,5 @@ Now open Postman and create a GET request to `http://localhost:4000/pies`. When 
 ### Our first controller
 
 
-
+We don't want to keep all our endpoints in the main `index.js` file. Having different *controllers* will help us separate out different parts of our app.
 
