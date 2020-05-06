@@ -185,4 +185,93 @@ It might help to figure out what exactly a "node" is.
 ![a visualization of the DOM tree](./domtree.png)
 
 
+There is a clear relationship between the elements in the DOM tree and how we write HTML.
+Specifically, the children of a tag are the tags it directly encloses, in order.
+
+
+
+### Children, parents, and siblings
+
+So far we have learned to access specific items. But what if we want to access elements related to elements we have already accessed?
+
+Inspect the output of `console.log(document.body.childNodes)`.
+- We get back a `NodeList`.
+- We see our `div` with the id of `list` surrounded by two text nodes.
+  - These text nodes are just whitespace.
+- If we dig into the `div`, we see it is an object with a lot of properties!
+  - One of these is `.children`, another one is another `.childNodes`
+  - So, while the text nodes don't have child nodes themselves, this `div` certainly does
+
+Compare this to the output of `console.log(document.body.children)`. What do you notice?
+
+
+
+The following properties are properties of every node that you can use to access related elements:
+<dl>
+<dt>`.firstChild`</dt><dd>the first child node</dd>
+<dt>`.lastChild`</dt><dd>the last child node</dd>
+<dt>`.parentNode`</dt><dd>the parent node</dd>
+<dt>`.nextSibling`</dt><dd>the next sibling node, that is, the next node in the tree under the parent</dd>
+<dt>`.previousSibling`</dt><dd>the previous sibling node</dd>
+</dl>
+
+For each of these, there is a version that considers only HTML elements, not all nodes (like text). You will probably find these to be more useful in most cases.
+<dl>
+<dt>`.firstElementChild`</dt><dd>the first child element</dd>
+<dt>`.lastElementChild`</dt><dd>the last child element</dd>
+<dt>`.parentElement`</dt><dd>the parent element</dd>
+<dt>`.nextElementSibling`</dt><dd>the next sibling element, that is, the next element in the tree under the parent</dd>
+<dt>`.previousElementSibling`</dt><dd>the previous sibling element</dd>
+</dl>
+
+
+If the child, parent, or sibling in question does not exist in the DOM, the value of the respective property is `null`.
+
+*Remember, the elements and nodes are all JavaScript objects!* We can use dot or square bracket notation to access their properties and methods.
+
+Let's play around with this using our magical to-do list. Try to guess what the output of the `console.log`s will be before you run the code.
+
+```js
+let listDiv = document.getElementById('list');
+
+console.log(listDiv.firstChild);
+console.log(listDiv.firstChild.nextSibling.nextSibling);
+```
+
+See if you can access a few other items in the DOM using these properties.
+
+
+### Adding and removing HTML content
+
+First of all, how do we change existing text on a page?
+Given an HTML element, we can access its inner text using, appropriately enough, the `.innerText` property.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Adding event listeners
+
+
+
+
+
+
+
+
+
+
 
