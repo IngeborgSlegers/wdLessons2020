@@ -174,5 +174,33 @@ Now open Postman and create a GET request to `http://localhost:4000/pies`. When 
 ### Our first controller
 
 
-We don't want to keep all our endpoints in the main `index.js` file. Having different *controllers* will help us separate out different parts of our app.
+- We don't want to keep all our endpoints in the main `index.js` file.
+- Having different *controllers* will help us separate out different parts of our app.
+- For instance, we will end up having a controller for users and one for pies
+
+To see this in action, let's create a new folder called `controllers`, and in this folder add a file called `piecontroller.js`.
+
+In `piecontroller.js`, add:
+
+```js
+const express = require('express');
+const router = express.Router();
+
+
+module.exports = router;
+```
+
+The `router` object is what we export from this file and plug into the main express app in `index.js`.
+You'll see another import/export system when we get to React, but for now:
+- we *export* something by assigning module.exports to it, and
+- we *import* something from another file by using the `require` function.
+
+
+
+
+
+
+
+
+
 
