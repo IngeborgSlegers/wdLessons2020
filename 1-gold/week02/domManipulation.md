@@ -208,20 +208,20 @@ Compare this to the output of `console.log(document.body.children)`. What do you
 
 The following properties are properties of every node that you can use to access related elements:
 <dl>
-<dt>`.firstChild`</dt><dd>the first child node</dd>
-<dt>`.lastChild`</dt><dd>the last child node</dd>
-<dt>`.parentNode`</dt><dd>the parent node</dd>
-<dt>`.nextSibling`</dt><dd>the next sibling node, that is, the next node in the tree under the parent</dd>
-<dt>`.previousSibling`</dt><dd>the previous sibling node</dd>
+<dt><code>.firstChild</code></dt><dd>the first child node</dd>
+<dt><code>.lastChild</code></dt><dd>the last child node</dd>
+<dt><code>.parentNode</code></dt><dd>the parent node</dd>
+<dt><code>.nextSibling</code></dt><dd>the next sibling node, that is, the next node in the tree under the parent</dd>
+<dt><code>.previousSibling</code></dt><dd>the previous sibling node</dd>
 </dl>
 
 For each of these, there is a version that considers only HTML elements, not all nodes (like text). You will probably find these to be more useful in most cases.
 <dl>
-<dt>`.firstElementChild`</dt><dd>the first child element</dd>
-<dt>`.lastElementChild`</dt><dd>the last child element</dd>
-<dt>`.parentElement`</dt><dd>the parent element</dd>
-<dt>`.nextElementSibling`</dt><dd>the next sibling element, that is, the next element in the tree under the parent</dd>
-<dt>`.previousElementSibling`</dt><dd>the previous sibling element</dd>
+<dt><code>.firstElementChild</code></dt><dd>the first child element</dd>
+<dt><code>.lastElementChild</code></dt><dd>the last child element</dd>
+<dt><code>.parentElement</code></dt><dd>the parent element</dd>
+<dt><code>.nextElementSibling</code></dt><dd>the next sibling element, that is, the next element in the tree under the parent</dd>
+<dt><code>.previousElementSibling</code></dt><dd>the previous sibling element</dd>
 </dl>
 
 
