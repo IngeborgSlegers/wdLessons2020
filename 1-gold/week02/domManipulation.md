@@ -235,27 +235,59 @@ Let's play around with this using our magical to-do list. Try to guess what the 
 let listDiv = document.getElementById('list');
 
 console.log(listDiv.firstChild);
-console.log(listDiv.firstChild.nextSibling.nextSibling);
+console.log(listDiv.firstElementChild.nextElementSibling.nextElementSibling);
 ```
 
 See if you can access a few other items in the DOM using these properties.
 
 
-### Adding and removing HTML content
+### Adding, removing, and modifying inner HTML content
 
 First of all, how do we change existing text on a page?
 Given an HTML element, we can access its inner text using, appropriately enough, the `.innerText` property.
 
+```js
+let groceryItem = document.getElementById('groceryList').firstElementChild;
+
+let groceryItemText = groceryItem.innerText;
+console.log(groceryItemText);          // Gillyweed
+
+groceryItem.innerText = 'Moondew drops';
+```
+
+There is also an `.innerHTML` property. Be careful in setting this because it will overwrite *all* the current inner HTML with the new content.
+
+*Editor's note: actually, overwriting `.innerText` also deletes the inner content. The `.innerText` of an element is the concatenation of all the text outside and inside its child nodes, setting this to something else can delete child nodes.*
 
 
+To try this out, let's try getting a list of all the `li` tags in the DOM.
+
+```js
+let liTags = document.getElementsByTagName('li');
+```
+
+What do we have in our toolbox that can iterate over each element in this `HTMLCollection`?  
+How about a `for ... of` loop? (Remember, these can go through any iterable.)
+
+```js
+for (let tag of liTags) {
+  tag.style.fontFamily = 'cursive';
+}
+```
+
+And we have set *all* the `li` tags to have a cursive font.
 
 
-
-
-
-
-
-
+***Advanced tidbit:*** a `NodeList` has a `.forEach` method like an array, but an `HTMLCollection` does not. If we are working with an `HTMLCollection`, though, we can convert it into an array easily using the spread operator:
+```js
+let gLIs = document.getElementsByClassName('groceryItem');
+let gLIsArray = [...gLIs];
+gLIsArray.forEach(el => console.log(el));
+```
+Or, in one line:
+```js
+[...document.getElementsByClassName('groceryItem')].forEach(el => console.log(el));
+```
 
 
 
@@ -265,8 +297,135 @@ Given an HTML element, we can access its inner text using, appropriately enough,
 
 ## Adding event listeners
 
+Things like clicking, scrolling, and changing inputs are called *events*.
+Events are represented in JavaScript as objects, too!
+To see that, let's `console.log` one.
+What we're going to do is use the `.addEventListener` method of an HTML element, which takes two arguments:
+- a string specifying what kind of event to listen for, and
+- a function taking the event as an argument that is run when the event happens (or "fires")
+
+```js
+function logEvent (event) {
+  console.log(event);
+}
+
+let clickMe = document.getElementById('clickMe');
+
+clickMe.addEventListener('click', logEvent);
+```
+
+When you click the button, you should be able to inspect the `MouseEvent` object and look at its properties.
+But now let's actually *do* something when we click the button.
+
+First, let's get rid of the current event listener.
+To do this, we need to provide the same string and function to the `.removeEventListener` method of the target:
+```js
+clickMe.removeEventListener('click', logEvent);
+```
+
+Now we can create a new listener. Since we don't need to remove it, we can just write the listener function as an arrow function.
+
+```js
+clickMe.addEventListener('click', (event) => {
+  event.target.style.backgroundColor = 'lightBlue';
+});
+```
+
+The target of the event is simply the element on the page where we attached the event listener, in this case the "clickMe" button. It is accessible as a property of the element object.
 
 
+
+
+
+
+
+
+
+
+
+
+## Creating and appending elements
+
+### `.createElement` and `.appendChild`
+
+
+We've manipulated elements on the page, but can we create new ones? Of course.
+
+Let's add another item to Newt's grocery list.
+We first start off by creating a new `li` element:
+```js
+let newGroceryItem = document.createElement('li');
+```
+
+But where *is* it? Well, we haven't put it anywhere yet.
+We can use the `.appendChild` method to specify under which parent node we want to add it.
+First let's grab the grocery list:
+```js
+let groceryList = document.getElementById('groceryList');
+```
+
+Now we can use `.appendChild` to add the newly created `li` element to the parent element.
+```js
+groceryList.appendChild(newGroceryItem);
+```
+
+You should now see an empty spot corresponding to the new `li`.
+The last step is to give it some content.
+```js
+newGroceryItem.innerText = 'Ginger root';
+```
+
+
+### `.insertBefore`
+
+Why don't we practice that again, with a twist.
+Right now the second list doesn't have its own title of "Grocery List", so we can add that.
+First, we create an `h3` tag:
+```js
+let groceryTitle = document.createElement('h3');
+```
+
+Since we know we'll need to add some text to it, let's do that now as well.
+```js
+groceryTitle.innerText = 'Grocery List';
+```
+
+And now we have to insert it somewhere. We can try appending it to the `groceryDiv`...
+```js
+let groceryDiv = document.getElementById('groceryDiv');
+
+groceryDiv.appendChild(groceryTitle);
+```
+...but you'll notice this puts it at the end.
+
+Instead, let's use another method to insert it before something else, aptly called `.insertBefore`.
+The two arguments to this method are the element you want to insert and the node you want to insert before.
+That second argument has to be a child of the element you're calling the method of.
+
+```js
+groceryDiv.insertBefore(groceryTitle, groceryDiv.childNodes[0]);
+```
+
+And there we go!
+Also notice that the `.insertBefore` didn't copy the element, it moved it.
+This makes sense; a single element should only appear once in any given document.
+
+Once again:
+- the *first* argument is what you want to insert,
+- the *second* argument is the child node you want to insert before.
+
+
+
+## Putting it all together
+
+Write an event listener to grab the value from the input field and display it in the console.
+
+Next, build on this:
+add an event listener that
+1. grabs the input value,
+2. creates a new `li` element,
+3. sets the inner text of that element to the input value, and
+4. appends your new element to the end of the grocery list.
 
 
 
