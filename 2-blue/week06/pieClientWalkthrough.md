@@ -331,3 +331,21 @@ To that last point, let's go into `App.js` and add the line to import `AuthForm`
 ```js
 import AuthForm from './components/layout/AuthForm';
 ```
+And now let's use it in the return:
+```js
+  return (
+    <div className="App">
+      <Navbar />
+      <h1>Pie Client</h1>
+      <AuthForm />
+      <Footer />
+    </div>
+  );
+```
+
+
+
+### `SignUp` and `LogIn`
+
+The problem with our auth form is that is only does one type of thing: signing up.
+We also need to be able to log in if we are a returning user.
