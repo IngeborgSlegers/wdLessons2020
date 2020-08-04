@@ -349,3 +349,53 @@ And now let's use it in the return:
 
 The problem with our auth form is that is only does one type of thing: signing up.
 We also need to be able to log in if we are a returning user.
+
+So here's what we're going to do.
+`AuthForm` will be our containing element for both `Signup` and `Login`, and these components will handle signing up and logging in, respectively.
+
+
+In `Signup.js`, write this:
+
+```js
+import React from 'react';
+
+const Signup = (props) => {
+  return (
+    <div id="signupdiv">
+    </div>
+  );
+};
+```
+
+In `Login.js`, write this:
+
+```js
+import React from 'react';
+
+const Login = (props) => {
+  return (
+    <div id="logindiv">
+    </div>
+  );
+};
+```
+
+Now change `AuthForm.js` to look like this:
+
+```js
+import React, { useState } from 'react';
+
+const AuthForm = (props) => {
+  [login, setLogin] = useState(false);
+
+  return (
+    <div id="authdiv">
+      {login ? <Login /> : <Signup />}
+      <div>
+        {login ? <p>Need an account?</p> : <p>Already have an account</p>}
+        <button onClick={() => setLogin(!login)}>{login ? "Sign Up" : "Log In" }</button>
+      </div>
+    </div>
+  );
+};
+```
